@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Chat with {{ other.name }} · Spark{% endblock %}
+{% block content %}
+<section class="chat-page">
+  <header class="chat-head">
+    <a href="{{ url_for('matches') }}">←</a>
+    <img src="{{ photo_url(other) if photo_url else url_for('static', filename='placeholder.svg') }}" alt="{{ other.name }}">
+    <div>
+      <strong>{{ other.name }}</strong>
+      <p>{{ other.city or "Spark match" }}</p>
+    </div>
+  </header>
+  <div class="thread" id="thread"></div>
+  <form class="composer" id="composer">
+    <input type="text" id="message-input" maxlength="1000" placeholder="Write a message" autocomplete="off" required>
+    <button class="btn primary" type="submit">Send</button>
+  </form>
+</section>
+{% endblock %}
+{% block scripts %}
+<script>
+  window.SPARK_CHAT = { otherId: {{ other.id }} };
+</script>
+<script src="{{ url_for('static', filename='chat.js') }}"></script>
+{% endblock %}

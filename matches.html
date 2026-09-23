@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Matches{% endblock %}
+{% block main_class %}page{% endblock %}
+
+{% block content %}
+  <h1>Your matches</h1>
+
+  {% if matches %}
+    <ul class="match-list">
+      {% for match in matches %}
+        <li>
+          <a class="match-row" href="{{ url_for('chat', user_id=match.id) }}">
+            <img src="{{ match.photo or url_for('static', filename='placeholder.svg') }}" alt="{{ match.name }}">
+            <div>
+              <strong>{{ match.name }}</strong>
+              <p>{{ match.city or 'New match' }}</p>
+            </div>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <div class="empty-state static">
+      <h2>No matches yet</h2>
+      <p>Swipe through profiles to start matching.</p>
+    </div>
+  {% endif %}
+{% endblock %}

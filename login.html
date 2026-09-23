@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Sign in · Spark{% endblock %}
+{% block main_class %}auth-main{% endblock %}
+{% block content %}
+<form class="card form" method="post">
+  <h1>Welcome back</h1>
+  <label>Email
+    <input type="email" name="email" required placeholder="you@example.com">
+  </label>
+  <label>Password
+    <input type="password" name="password" required placeholder="••••••••">
+  </label>
+  <button class="btn primary" type="submit">Sign in</button>
+  <p>Need an account? <a href="{{ url_for('signup') }}">Create one</a></p>
+</form>
+{% endblock %}

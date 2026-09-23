@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Profile · Spark{% endblock %}
+{% block main_class %}page{% endblock %}
+{% block content %}
+<section class="profile-hero">
+  <img src="{{ photo_url(user) if user else url_for('static', filename='placeholder.svg') }}" alt="{{ user.name }}">
+  <div>
+    <h1>{{ user.name }}, {{ user.age or '—' }}</h1>
+    <p>{{ user.city or 'Location hidden' }}</p>
+    <p>{{ user.bio or 'No bio yet.' }}</p>
+    <div class="tags">
+      {% for interest in (user.interests or '').split(',') if interest.strip() %}
+        <span>{{ interest.strip() }}</span>
+      {% endfor %}
+    </div>
+    <div class="hero-actions">
+      <a class="btn primary" href="{{ url_for('edit_profile') }}">Edit profile</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

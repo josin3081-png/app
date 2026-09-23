@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Discover · Spark{% endblock %}
+{% block content %}
+<section class="discover">
+  <div id="card-stage" class="card-stage">
+    <div class="empty-state" id="empty-state" hidden>
+      <h2>You're all caught up</h2>
+      <p>No more people to show right now. Check Matches or come back after more people join.</p>
+      <a class="btn primary" href="{{ url_for('matches') }}">See matches</a>
+    </div>
+    <article class="person-card" id="person-card" hidden>
+      <img id="card-photo" alt="">
+      <div class="person-info">
+        <h2><span id="card-name"></span> <span id="card-age"></span></h2>
+        <p class="city" id="card-city"></p>
+        <p id="card-bio"></p>
+        <div class="tags" id="card-tags"></div>
+      </div>
+    </article>
+  </div>
+  <div class="swipe-actions" id="swipe-actions" hidden>
+    <button class="round pass" id="pass-btn" type="button" aria-label="Pass">✕</button>
+    <button class="round like" id="like-btn" type="button" aria-label="Like">♥</button>
+  </div>
+</section>
+<div class="modal" id="match-modal" hidden>
+  <div class="modal-card">
+    <p class="eyebrow">It's a match</p>
+    <img id="match-photo" alt="">
+    <h2>You and <span id="match-name"></span> liked each other</h2>
+    <div class="hero-actions">
+      <a class="btn primary" id="match-chat" href="#">Say hello</a>
+      <button class="btn ghost" id="match-keep" type="button">Keep swiping</button>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='discover.js') }}"></script>
+{% endblock %}

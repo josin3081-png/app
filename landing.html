@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Spark — Meet people nearby{% endblock %}
+{% block main_class %}landing-main{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow">Dating, simply</p>
+    <h1>Meet people. Match. Start talking.</h1>
+    <p class="lede">Spark is a local dating app built with Python. Create a profile, swipe on people nearby, and chat when you both like each other.</p>
+    <div class="hero-actions">
+      <a class="btn primary" href="{{ url_for('signup') }}">Create an account</a>
+      <a class="btn ghost" href="{{ url_for('login') }}">Sign in</a>
+    </div>
+    <p class="hint">Try a demo: <code>maya@spark.test</code> / <code>demo123</code></p>
+  </div>
+  <div class="hero-card">
+    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80" alt="Person smiling outdoors">
+    <div class="hero-meta">
+      <strong>Maya, 27</strong>
+      <span>Austin · Music, hiking</span>
+    </div>
+  </div>
+</section>
+{% endblock %}
